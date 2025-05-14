@@ -1,5 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged, map } from 'rxjs/operators';
+import { distinctUntilChanged, map, skip } from 'rxjs/operators';
+import isEqual from 'lodash.isequal';
 
 type Middleware<T> = (prevState: T, nextState: T) => T | false;
 
@@ -37,28 +38,30 @@ export class ReactiveStore<T extends object> {
       next = result;
     }
 
-    if (JSON.stringify(prev) !== JSON.stringify(next)) {
+    if (!isEqual(prev, next)) {
       this.subject.next(next);
       this.listeners.forEach(fn => fn(next));
     }
   }
 
-  select<R>(selector: (state: T) => R): Observable<R> {
-    return this.subject.asObservable().pipe(
+  select<R>(selector: (state: T) => R, emitInitial = true): Observable<R> {
+    const stream = this.subject.asObservable().pipe(
       map(selector),
       distinctUntilChanged()
     );
+    return emitInitial ? stream : stream.pipe(skip(1));
   }
 
-  selectMany<K extends keyof T>(keys: K[]): Observable<Pick<T, K>> {
-    return this.subject.asObservable().pipe(
+  selectMany<K extends keyof T>(keys: K[], emitInitial = true): Observable<Pick<T, K>> {
+    const stream = this.subject.asObservable().pipe(
       map(state => {
         const result: Partial<T> = {};
         for (const k of keys) result[k] = state[k];
         return result as Pick<T, K>;
       }),
-      distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b))
+      distinctUntilChanged((a, b) => isEqual(a, b))
     );
+    return emitInitial ? stream : stream.pipe(skip(1));
   }
 
   use(mw: Middleware<T>) {

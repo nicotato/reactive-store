@@ -1,4 +1,4 @@
-import { ReactiveStore } from './ReactiveStore';
+import { ReactiveStore } from '../src/ReactiveStore';
 
 describe('ReactiveStore', () => {
   type TestState = { count: number; user: { name: string } };
@@ -18,20 +18,22 @@ describe('ReactiveStore', () => {
   });
 
   test('select returns correct value', (done) => {
-    const sub = store.select(s => s.count).subscribe(value => {
+    const sub = store.select(s => s.count, false).subscribe(value => {
       expect(value).toBe(10);
       sub.unsubscribe();
       done();
     });
+
     store.setState({ count: 10 });
   });
 
   test('selectMany returns selected values', (done) => {
-    const sub = store.selectMany(['count']).subscribe(val => {
+    const sub = store.selectMany(['count'], false).subscribe(val => {
       expect(val).toEqual({ count: 3 });
       sub.unsubscribe();
       done();
     });
+
     store.setState({ count: 3 });
   });
 

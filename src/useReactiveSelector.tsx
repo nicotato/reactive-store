@@ -1,0 +1,22 @@
+import { useEffect, useState } from 'react';
+import { Subscription } from 'rxjs';
+import { ReactiveStore } from './ReactiveStore';
+
+export function useReactiveSelector<T, R>(
+  store: ReactiveStore<T extends object ? T : never>,
+  selector: (state: T) => R,
+  emitInitial = true
+): R | undefined {
+  const [selected, setSelected] = useState<R | undefined>(() => {
+    return emitInitial ? selector(store.getSnapshot()) : undefined;
+  });
+
+  useEffect(() => {
+    const sub: Subscription = store
+      .select(selector, emitInitial)
+      .subscribe(setSelected);
+    return () => sub.unsubscribe();
+  }, [store, selector, emitInitial]);
+
+  return selected;
+}

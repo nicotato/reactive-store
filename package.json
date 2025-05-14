@@ -1,0 +1,38 @@
+{
+  "name": "reactive-store",
+  "version": "0.6.0",
+  "description": "Store reactivo basado en rxjs",
+  "homepage": "https://github.com/nicotato/reactive-store#readme",
+  "bugs": {
+    "url": "https://github.com/nicotato/reactive-store/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicotato/reactive-store.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Nicolás Tato",
+  "type": "module",
+  "types": "dist/reactive-store.d.ts",
+  "main": "dist/reactive-store.js",
+  "scripts": {
+    "test": "jest",
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/lodash.isequal": "^4.5.8",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "jest": "^29.7.0",
+    "react": "^19.1.0",
+    "rollup": "^4.40.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "rxjs": "^7.8.2",
+    "ts-jest": "^29.3.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "lodash.isequal": "^4.5.0"
+  }
+}
