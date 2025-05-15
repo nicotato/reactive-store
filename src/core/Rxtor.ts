@@ -1,8 +1,8 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, map, skip } from 'rxjs/operators';
-import deepEqual from 'fast-deep-equal';
+import { default as deepEqual } from 'fast-deep-equal';
+import { Middleware } from '../types';
 
-type Middleware<T> = (prevState: T, nextState: T) => T | false;
 
 export class Rxtor<T extends object> {
   private subject: BehaviorSubject<T>;

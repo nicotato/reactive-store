@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Subscription } from 'rxjs';
-import { Rxtor } from './Rxtor';
+import { Rxtor } from '../core/Rxtor';
 
 export function useRxtorSelector<T, R>(
   store: Rxtor<T extends object ? T : never>,

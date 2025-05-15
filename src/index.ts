@@ -1,3 +1,3 @@
-export { Rxtor } from "./Rxtor";
-export { useRxtorSelector } from "./useRxtorSelector";
+export * from './core/Rxtor';
+export * from './hooks/useRxtorSelector';
 

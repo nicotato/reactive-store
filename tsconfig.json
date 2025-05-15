@@ -1,17 +1,26 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "ESNext", 
-        "declaration": true, 
-        "outDir": "./dist", 
-        "strict": true, 
+        "module": "ESNext",
+        "declaration": true,
+        "declarationDir": "dist",
+        "outDir": "dist",
+        "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true, 
         "moduleResolution": "node",
         "jsx": "react-jsx",
-        "declarationDir": "dist"
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": false,
+        "sourceMap": true,
     },
-    "include": ["src/**/*", "tests/**/*"],
-    "exclude": ["node_modules", "dist", "tests"]
+    "include": [
+        "src/**/*",
+        "tests/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "tests"
+    ]
 }
