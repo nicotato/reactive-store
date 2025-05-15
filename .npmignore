@@ -1,0 +1,11 @@
+src/
+tests/
+rollup.config.js
+tsconfig.json
+.vscode/
+node_modules/
+*.log
+*.tgz
+*.zip
+*.tar
+*.tar.gz

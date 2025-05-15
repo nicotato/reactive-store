@@ -1,6 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, map, skip } from 'rxjs/operators';
-import isEqual from 'lodash.isequal';
+import deepEqual from 'fast-deep-equal';
 
 type Middleware<T> = (prevState: T, nextState: T) => T | false;
 
@@ -38,7 +38,7 @@ export class Rxtor<T extends object> {
       next = result;
     }
 
-    if (!isEqual(prev, next)) {
+    if (!deepEqual(prev, next)) {
       this.subject.next(next);
       this.listeners.forEach(fn => fn(next));
     }
@@ -59,7 +59,7 @@ export class Rxtor<T extends object> {
         for (const k of keys) result[k] = state[k];
         return result as Pick<T, K>;
       }),
-      distinctUntilChanged((a, b) => isEqual(a, b))
+      distinctUntilChanged((a, b) => deepEqual(a, b))
     );
     return emitInitial ? stream : stream.pipe(skip(1));
   }

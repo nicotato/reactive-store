@@ -45,7 +45,7 @@ store.selectMany(['count', 'user']).subscribe(console.log);
 ### Hook para React / React Native
 
 ```tsx
-const count = useReactiveSelector(store, s => s.count);
+const count = useRxtorSelector(store, s => s.count);
 ```
 
 ### Middleware
@@ -65,4 +65,4 @@ store.onStateChange(state => console.log('New state:', state));
 
 ## Diagrama
 
-![Diagrama](./A_diagram_of_Rxtor's_functionality_and_flo.png)
+![Diagrama](./rxtor_flow.webp)
