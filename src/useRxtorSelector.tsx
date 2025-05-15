@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Subscription } from 'rxjs';
-import { ReactiveStore } from './ReactiveStore';
+import { Rxtor } from './Rxtor';
 
-export function useReactiveSelector<T, R>(
-  store: ReactiveStore<T extends object ? T : never>,
+export function useRxtorSelector<T, R>(
+  store: Rxtor<T extends object ? T : never>,
   selector: (state: T) => R,
   emitInitial = true
 ): R | undefined {

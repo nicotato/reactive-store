@@ -1,11 +1,11 @@
-import { ReactiveStore } from '../src/ReactiveStore';
+import { Rxtor } from '../src';
 
-describe('ReactiveStore', () => {
+describe('RxtorStore', () => {
   type TestState = { count: number; user: { name: string } };
-  let store: ReactiveStore<TestState>;
+  let store: Rxtor<TestState>;
 
   beforeEach(() => {
-    store = new ReactiveStore({ count: 0, user: { name: 'Alice' } });
+    store = new Rxtor({ count: 0, user: { name: 'Alice' } });
   });
 
   test('initial state is correct', () => {

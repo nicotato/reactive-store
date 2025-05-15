@@ -4,7 +4,7 @@ import isEqual from 'lodash.isequal';
 
 type Middleware<T> = (prevState: T, nextState: T) => T | false;
 
-export class ReactiveStore<T extends object> {
+export class Rxtor<T extends object> {
   private subject: BehaviorSubject<T>;
   private middleware: Middleware<T>[] = [];
   private listeners: ((state: T) => void)[] = [];

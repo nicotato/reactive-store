@@ -1,6 +1,6 @@
-# ReactiveStore
+# Rxtor
 
-`ReactiveStore` es una pequeña librería de gestión de estado reactiva usando RxJS. Ideal para apps React o React Native.
+`Rxtor` es una pequeña librería de gestión de estado reactiva usando RxJS. Ideal para apps React o React Native.
 
 ## Instalación
 
@@ -16,7 +16,7 @@ type State = {
   user: { name: string };
 };
 
-const store = new ReactiveStore<State>({
+const store = new Rxtor<State>({
   count: 0,
   user: { name: 'Alice' },
 });
@@ -65,4 +65,4 @@ store.onStateChange(state => console.log('New state:', state));
 
 ## Diagrama
 
-![Diagrama](./A_diagram_of_ReactiveStore's_functionality_and_flo.png)
+![Diagrama](./A_diagram_of_Rxtor's_functionality_and_flo.png)

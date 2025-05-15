@@ -1,20 +1,17 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "ESNext", // El sistema de módulos, puedes usar 'ESNext', 'CommonJS', 'AMD', etc.
-        "declaration": true, // Genera archivos .d.ts (declaraciones de tipo)
-        "outDir": "./dist", // Directorio donde se guardarán los archivos compilados
-        "strict": true, // Habilita el modo estricto de TypeScript
-        "esModuleInterop": true, // Permite la interoperabilidad con módulos CommonJS
-        "skipLibCheck": true, // Omite la verificación de tipos en las bibliotecas de tipo
-        "forceConsistentCasingInFileNames": true, // Asegura la consistencia de mayúsculas/minúsculas
+        "module": "ESNext", 
+        "declaration": true, 
+        "outDir": "./dist", 
+        "strict": true, 
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true, 
         "moduleResolution": "node",
-        "jsx": "react-jsx"
+        "jsx": "react-jsx",
+        "declarationDir": "dist"
     },
-    "include": [
-        "src/**/*.ts"
-, "tests/ReactiveStore.test.ts"    ], // Archivos fuente a compilar
-    "exclude": [
-        "node_modules"
-    ] // Archivos a excluir de la compilación
+    "include": ["src"],
+    "exclude": ["node_modules", "dist", "tests"]
 }

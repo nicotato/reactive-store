@@ -1,3 +1,3 @@
-export { ReactiveStore } from "./ReactiveStore";
-export { useReactiveSelector } from "./useReactiveSelector";
+export { Rxtor } from "./Rxtor";
+export { useRxtorSelector } from "./useRxtorSelector";
 
